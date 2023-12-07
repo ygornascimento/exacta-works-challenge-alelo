@@ -97,12 +97,9 @@
 		1E8D7CD22B21DFEC00FD9C7D /* exactaworks-chalenge-alelo */ = {
 			isa = PBXGroup;
 			children = (
-				1E8D7CD32B21DFEC00FD9C7D /* AppDelegate.swift */,
-				1E8D7CD52B21DFEC00FD9C7D /* SceneDelegate.swift */,
-				1E8D7CD72B21DFEC00FD9C7D /* HomeViewController.swift */,
-				1E8D7CDC2B21DFED00FD9C7D /* Assets.xcassets */,
-				1E8D7CDE2B21DFED00FD9C7D /* LaunchScreen.storyboard */,
-				1E8D7CE12B21DFED00FD9C7D /* Info.plist */,
+				1E8D7D082B21FD2F00FD9C7D /* ShoppingCartScreen */,
+				1E8D7D072B21F3FE00FD9C7D /* HomeScreen */,
+				1E8D7D062B21F34300FD9C7D /* SupportFiles */,
 			);
 			path = "exactaworks-chalenge-alelo";
 			sourceTree = "<group>";
@@ -122,6 +119,57 @@
 				1E8D7CF62B21DFED00FD9C7D /* exactaworks_chalenge_aleloUITestsLaunchTests.swift */,
 			);
 			path = "exactaworks-chalenge-aleloUITests";
+			sourceTree = "<group>";
+		};
+		1E8D7D032B21F31200FD9C7D /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		1E8D7D042B21F32800FD9C7D /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		1E8D7D052B21F33600FD9C7D /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		1E8D7D062B21F34300FD9C7D /* SupportFiles */ = {
+			isa = PBXGroup;
+			children = (
+				1E8D7CD32B21DFEC00FD9C7D /* AppDelegate.swift */,
+				1E8D7CD52B21DFEC00FD9C7D /* SceneDelegate.swift */,
+				1E8D7CDC2B21DFED00FD9C7D /* Assets.xcassets */,
+				1E8D7CDE2B21DFED00FD9C7D /* LaunchScreen.storyboard */,
+				1E8D7CE12B21DFED00FD9C7D /* Info.plist */,
+			);
+			path = SupportFiles;
+			sourceTree = "<group>";
+		};
+		1E8D7D072B21F3FE00FD9C7D /* HomeScreen */ = {
+			isa = PBXGroup;
+			children = (
+				1E8D7CD72B21DFEC00FD9C7D /* HomeViewController.swift */,
+				1E8D7D052B21F33600FD9C7D /* ViewModel */,
+				1E8D7D042B21F32800FD9C7D /* View */,
+				1E8D7D032B21F31200FD9C7D /* Model */,
+			);
+			path = HomeScreen;
+			sourceTree = "<group>";
+		};
+		1E8D7D082B21FD2F00FD9C7D /* ShoppingCartScreen */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ShoppingCartScreen;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
