@@ -22,7 +22,7 @@ final class DataService {
 
     private static let session = URLSession(configuration: sessionConfiguration)
 
-    class func loadData(fromUrl: String? = nil, onComplete: @escaping (ProductsList) -> Void, onError: @escaping (DataErros) -> Void) {
+    class func loadData(fromUrl: String? = nil, onComplete: @escaping (AllProducts) -> Void, onError: @escaping (DataErros) -> Void) {
         guard let requestURL = fromUrl else { return }
 
         guard let url = URL(string: requestURL) else {
@@ -41,7 +41,7 @@ final class DataService {
                 if statusCodeResponse.statusCode == 200 {
                     guard let data = data else { return }
                     do {
-                        let decodedData = try JSONDecoder().decode(ProductsList.self, from: data)
+                        let decodedData = try JSONDecoder().decode(AllProducts.self, from: data)
                         onComplete(decodedData)
                     } catch {
                         onError(.noData)
@@ -88,12 +88,12 @@ final class DataService {
         dataTask.resume()
     }
     
-    class func loadJson(filename fileName: String) -> ProductsList? {
+    class func loadJson(filename fileName: String) -> AllProducts? {
         if let url = Bundle.main.url(forResource: fileName, withExtension: "json") {
             do {
                 let data = try Data(contentsOf: url)
                 let decoder = JSONDecoder()
-                let jsonData = try decoder.decode(ProductsList.self, from: data)
+                let jsonData = try decoder.decode(AllProducts.self, from: data)
                 return jsonData
             } catch {
                 print("error:\(error)")

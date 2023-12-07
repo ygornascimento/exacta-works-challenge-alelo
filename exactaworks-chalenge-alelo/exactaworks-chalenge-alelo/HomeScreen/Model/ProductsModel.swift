@@ -7,9 +7,7 @@
 
 import Foundation
 
-struct ProductsList: Codable {
-    let products: [Product]?
-}
+typealias AllProducts = [Product]
 
 struct Size: Codable {
     let available: Bool?
@@ -34,5 +32,20 @@ struct Product: Codable {
         case actualPrice = "actual_price"
         case discountPercentage = "discount_percentage"
         case installments, image, sizes
+    }
+    
+    init(name: String?, style: String?, codeColor: String?, colorSlug: String?, color: String?, onSale: Bool?, regularPrice: String?, actualPrice: String?, discountPercentage: String?, installments: String?, image: String?, sizes: [Size]?) {
+        self.name = name
+        self.style = style
+        self.codeColor = codeColor
+        self.colorSlug = colorSlug
+        self.color = color
+        self.onSale = onSale
+        self.regularPrice = regularPrice
+        self.actualPrice = actualPrice
+        self.discountPercentage = discountPercentage
+        self.installments = installments
+        self.image = image
+        self.sizes = sizes
     }
 }
