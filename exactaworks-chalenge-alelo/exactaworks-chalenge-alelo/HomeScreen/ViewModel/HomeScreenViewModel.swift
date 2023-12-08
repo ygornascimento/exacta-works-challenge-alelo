@@ -9,31 +9,31 @@ import Foundation
 
 struct HomeScreenViewModel {
 
-    let product = AllProducts()
+    var products = [Product]()
     var cellIndex = Int()
     
     var imageUrl: String {
-        guard let imageUrl = product[cellIndex].image else { return "" }
+        guard let imageUrl = products[cellIndex].image else { return "" }
         return imageUrl
     }
     
     var productName: String {
-        guard let productName = product[cellIndex].name else { return "" }
+        guard let productName = products[cellIndex].name else { return "" }
         return productName
     }
     
     var productPrice: String {
-        guard let productPrice = product[cellIndex].regularPrice else { return "" }
+        guard let productPrice = products[cellIndex].regularPrice else { return "" }
         return productPrice
     }
     
     var productPromotionalStatus: String {
-        guard let productPromotionalStatus = product[cellIndex].actualPrice else { return "" }
+        guard let productPromotionalStatus = products[cellIndex].actualPrice else { return "" }
         return productPromotionalStatus
     }
     
     var productPromotionalPrice: String {
-        guard let productPromotionalPrice = product[cellIndex].actualPrice else { return "" }
+        guard let productPromotionalPrice = products[cellIndex].actualPrice else { return "" }
         return productPromotionalPrice
     }
     

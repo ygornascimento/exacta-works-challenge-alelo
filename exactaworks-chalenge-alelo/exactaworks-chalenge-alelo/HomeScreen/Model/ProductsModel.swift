@@ -9,6 +9,10 @@ import Foundation
 
 typealias AllProducts = [Product]
 
+struct ProductsList: Codable {
+    let products: [Product]?
+}
+
 struct Size: Codable {
     let available: Bool?
     let size, sku: String?
