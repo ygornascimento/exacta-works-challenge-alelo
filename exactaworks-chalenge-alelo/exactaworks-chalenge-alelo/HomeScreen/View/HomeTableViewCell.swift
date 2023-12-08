@@ -13,7 +13,6 @@ final class HomeTableViewCell: UITableViewCell {
     private let cellContainer = HomeContainerTableViewCell()
     private var viewModel = HomeScreenViewModel()
     
-//    private var downloadTask: DownloadTask?
     private let loadingIndicator: UIActivityIndicatorView = {
         let indicator = UIActivityIndicatorView()
         indicator.color = .black
@@ -32,20 +31,25 @@ final class HomeTableViewCell: UITableViewCell {
     }
     
     override func prepareForReuse() {
-//        downloadTask?.cancel()
     }
     
     func configureWith(viewModel: HomeScreenViewModel, imageUrl: String) {
         loadingIndicator.startAnimating()
         cellContainer.productName.text = viewModel.productName
-        cellContainer.productPrice.text = viewModel.productPrice
-        cellContainer.productPromotionalStatus.text = viewModel.productPromotionalStatus
-        cellContainer.productPromotionalPrice.text = viewModel.productPromotionalPrice
-        
-        var urlComponents = URLComponents(string: imageUrl)
-        urlComponents?.scheme = "https"
-        guard let httpsImage = urlComponents?.string else { return }
-        let finalImageUrl = URL(string: httpsImage)
+        cellContainer.productPrice.text = "Preço: \(viewModel.productPrice) ou em até \(viewModel.productPriceInstallments)"
+        cellContainer.productPromotionalStatus.text = "Em Promoção?"
+        cellContainer.productPromotionalPrice.text = "Preço Promocional: \(viewModel.productPromotionalPrice)"
+        cellContainer.availableSize.text = "Tamanhos: PP - P - M - G - GG"
+        DataService.loadImage(
+            fromUrl: viewModel.imageUrl) { [weak self] image in
+                DispatchQueue.main.async {
+                    self?.cellContainer.productImage.image = image
+                }
+            } onError: { error in
+                DispatchQueue.main.async {
+                    self.cellContainer.productImage.image = UIImage(named: "placeholder")
+                }
+            }
         
         loadingIndicator.stopAnimating()
     }
@@ -62,7 +66,7 @@ final class HomeTableViewCell: UITableViewCell {
             cellContainer.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 8),
             cellContainer.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
             cellContainer.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16),
-            cellContainer.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -8),
+            cellContainer.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -16),
             
             loadingIndicator.centerXAnchor.constraint(equalTo: cellContainer.productImage.centerXAnchor),
             loadingIndicator.centerYAnchor.constraint(equalTo: cellContainer.productImage.centerYAnchor)

@@ -27,6 +27,11 @@ struct HomeScreenViewModel {
         return productPrice
     }
     
+    var productPriceInstallments: String {
+        guard let productInstallments = products[cellIndex].installments else { return "" }
+        return productInstallments
+    }
+    
     var productPromotionalStatus: String {
         guard let productPromotionalStatus = products[cellIndex].actualPrice else { return "" }
         return productPromotionalStatus
