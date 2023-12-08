@@ -33,21 +33,37 @@ struct HomeScreenViewModel {
     }
     
     var productPromotionalStatus: String {
+        guard let isOnSale = products[cellIndex].onSale else { return "" }
         guard let productPromotionalStatus = products[cellIndex].actualPrice else { return "" }
-        return productPromotionalStatus
+        if isOnSale {
+           return "Produto em PROMOÇÃO!!!"
+        } else {
+            return "Não há promoção para este produto :("
+        }
     }
     
     var productPromotionalPrice: String {
+        guard let isOnSale = products[cellIndex].onSale else { return "" }
         guard let productPromotionalPrice = products[cellIndex].actualPrice else { return "" }
-        return productPromotionalPrice
+        if isOnSale {
+           return productPromotionalPrice
+        } else {
+            return " - "
+        }
     }
     
-//    var availableSize: String {
-//        let listSizes = [String]()
-//        guard let sizes = product[cellIndex].sizes else { return "" }
-//        
-//        return sizes
-//    }
+    var availableSize: String {
+        var listSizes = String()
+        guard let sizes = products[cellIndex].sizes else { return "" }
+        
+        for size in sizes {
+            if size.available ?? false {
+                listSizes.append((size.size! + "  " ) as String)
+            }
+        }
+        
+        return listSizes
+    }
     
     
 }

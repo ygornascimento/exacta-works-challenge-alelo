@@ -37,9 +37,9 @@ final class HomeTableViewCell: UITableViewCell {
         loadingIndicator.startAnimating()
         cellContainer.productName.text = viewModel.productName
         cellContainer.productPrice.text = "Preço: \(viewModel.productPrice) ou em até \(viewModel.productPriceInstallments)"
-        cellContainer.productPromotionalStatus.text = "Em Promoção?"
+        cellContainer.productPromotionalStatus.text = viewModel.productPromotionalStatus
         cellContainer.productPromotionalPrice.text = "Preço Promocional: \(viewModel.productPromotionalPrice)"
-        cellContainer.availableSize.text = "Tamanhos: PP - P - M - G - GG"
+        cellContainer.availableSize.text = "Tamanhos disponíveis: \(viewModel.availableSize)"
         DataService.loadImage(
             fromUrl: viewModel.imageUrl) { [weak self] image in
                 DispatchQueue.main.async {
