@@ -34,9 +34,8 @@ struct HomeScreenViewModel {
     
     var productPromotionalStatus: String {
         guard let isOnSale = products[cellIndex].onSale else { return "" }
-        guard let productPromotionalStatus = products[cellIndex].actualPrice else { return "" }
         if isOnSale {
-           return "Produto em PROMOÇÃO!!!"
+           return "PROMOÇÃO!!!"
         } else {
             return "Não há promoção para este produto :("
         }
@@ -63,6 +62,18 @@ struct HomeScreenViewModel {
         }
         
         return listSizes
+    }
+    
+    mutating func filterOnlyPromotionItems() {
+        var promotionProducts = [Product]()
+        
+        for product in products {
+            if product.onSale ?? true {
+                promotionProducts.append(product)
+            }
+        }
+        
+        products = promotionProducts
     }
     
     

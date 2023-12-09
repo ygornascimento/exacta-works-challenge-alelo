@@ -30,7 +30,6 @@ class HomeViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        loadingIndicator.startAnimating()
         getData()
         setupTableView()
         setupNavigationController()
@@ -38,6 +37,7 @@ class HomeViewController: UIViewController {
     }
     
     private func getData() {
+        loadingIndicator.startAnimating()
         let productsData = DataService.loadJson(filename: "mock")
         guard let products = productsData?.products else { return }
         viewModel.products.append(contentsOf: products)
@@ -51,25 +51,21 @@ class HomeViewController: UIViewController {
         navigationController?.navigationBar.scrollEdgeAppearance = appearance
         
         let menuItems = UIMenu(title: " ", options: .displayInline, children: [
-            UIAction(title: "Itens em promoção",
+            UIAction(title: "Produtos em promoção",
                      handler: { _ in
-                         print("item em promoção....")
+                         self.viewModel.filterOnlyPromotionItems()
+                         self.tableView.reloadData()
                      }),
             
-            UIAction(title: "Todos os Itens",
+            UIAction(title: "Todos os Produtos",
                      handler: { _ in
-                        print("Todos os itens....")
+                         self.viewModel.products = []
+                         self.getData()
+                         self.tableView.reloadData()
                     })
         ])
         
-        
-        
-//        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Filtrar", style: .plain, target: self, action: #selector(onButtonTap))
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "line.3.horizontal.decrease.circle"), menu: menuItems)
-    }
-    
-    @objc func onButtonTap() {
-        print("you tapped me !?")
     }
     
     private func setupTableView() {
