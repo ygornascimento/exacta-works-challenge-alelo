@@ -23,7 +23,7 @@ class HomeViewController: UIViewController {
     
     private let loadingIndicator: UIActivityIndicatorView = {
         let indicator = UIActivityIndicatorView()
-        indicator.color = .green
+        indicator.color = .gray
         indicator.style = .large
         return indicator
     }()
@@ -33,6 +33,8 @@ class HomeViewController: UIViewController {
         loadingIndicator.startAnimating()
         getData()
         setupTableView()
+        setupNavigationController()
+        self.title = "Lista de Produtos"
     }
     
     private func getData() {
@@ -40,18 +42,34 @@ class HomeViewController: UIViewController {
         guard let products = productsData?.products else { return }
         viewModel.products.append(contentsOf: products)
         loadingIndicator.stopAnimating()
-        }
+    }
     
     private func setupNavigationController() {
         let appearance = UINavigationBarAppearance()
         appearance.configureWithOpaqueBackground()
         navigationController?.navigationBar.standardAppearance = appearance
         navigationController?.navigationBar.scrollEdgeAppearance = appearance
-
-        let navigationLogoImage = UIImage(named: "NavigationControllerLogoImage")
-        let imageView = UIImageView(image: navigationLogoImage)
-        imageView.contentMode = .scaleAspectFit
-        navigationItem.titleView = imageView
+        
+        let menuItems = UIMenu(title: " ", options: .displayInline, children: [
+            UIAction(title: "Itens em promoção",
+                     handler: { _ in
+                         print("item em promoção....")
+                     }),
+            
+            UIAction(title: "Todos os Itens",
+                     handler: { _ in
+                        print("Todos os itens....")
+                    })
+        ])
+        
+        
+        
+//        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Filtrar", style: .plain, target: self, action: #selector(onButtonTap))
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "line.3.horizontal.decrease.circle"), menu: menuItems)
+    }
+    
+    @objc func onButtonTap() {
+        print("you tapped me !?")
     }
     
     private func setupTableView() {

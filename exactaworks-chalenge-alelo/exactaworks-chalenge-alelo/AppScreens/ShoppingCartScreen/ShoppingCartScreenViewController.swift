@@ -9,4 +9,9 @@ import UIKit
 
 final class ShoppingCartScreenViewController: UIViewController {
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        self.title = "Carrinho de Compras"
+    }
+    
 }
