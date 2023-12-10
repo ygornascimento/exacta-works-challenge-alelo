@@ -24,6 +24,8 @@
 		1E8D7D182B22402B00FD9C7D /* HomeScreenViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E8D7D172B22402B00FD9C7D /* HomeScreenViewModel.swift */; };
 		1E8D7D1B2B23A92900FD9C7D /* ShoppingCartScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E8D7D1A2B23A92900FD9C7D /* ShoppingCartScreenViewController.swift */; };
 		1E8D7D1D2B23A96D00FD9C7D /* AppTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E8D7D1C2B23A96D00FD9C7D /* AppTabBarController.swift */; };
+		1E8D7D1F2B26025900FD9C7D /* ShoppingCartViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E8D7D1E2B26025900FD9C7D /* ShoppingCartViewModel.swift */; };
+		1E8D7D212B26083400FD9C7D /* ShoppingCartSumUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E8D7D202B26083400FD9C7D /* ShoppingCartSumUpView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -65,6 +67,8 @@
 		1E8D7D172B22402B00FD9C7D /* HomeScreenViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreenViewModel.swift; sourceTree = "<group>"; };
 		1E8D7D1A2B23A92900FD9C7D /* ShoppingCartScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingCartScreenViewController.swift; sourceTree = "<group>"; };
 		1E8D7D1C2B23A96D00FD9C7D /* AppTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppTabBarController.swift; sourceTree = "<group>"; };
+		1E8D7D1E2B26025900FD9C7D /* ShoppingCartViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingCartViewModel.swift; sourceTree = "<group>"; };
+		1E8D7D202B26083400FD9C7D /* ShoppingCartSumUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingCartSumUpView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -192,6 +196,8 @@
 			isa = PBXGroup;
 			children = (
 				1E8D7D1A2B23A92900FD9C7D /* ShoppingCartScreenViewController.swift */,
+				1E8D7D1E2B26025900FD9C7D /* ShoppingCartViewModel.swift */,
+				1E8D7D202B26083400FD9C7D /* ShoppingCartSumUpView.swift */,
 			);
 			path = ShoppingCartScreen;
 			sourceTree = "<group>";
@@ -354,6 +360,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1E8D7D212B26083400FD9C7D /* ShoppingCartSumUpView.swift in Sources */,
 				1E8D7CD82B21DFEC00FD9C7D /* HomeViewController.swift in Sources */,
 				1E8D7D1D2B23A96D00FD9C7D /* AppTabBarController.swift in Sources */,
 				1E8D7D182B22402B00FD9C7D /* HomeScreenViewModel.swift in Sources */,
@@ -362,6 +369,7 @@
 				1E8D7D122B220D2400FD9C7D /* DataService.swift in Sources */,
 				1E8D7CD62B21DFEC00FD9C7D /* SceneDelegate.swift in Sources */,
 				1E8D7D142B2237F500FD9C7D /* HomeContainerTableViewCell.swift in Sources */,
+				1E8D7D1F2B26025900FD9C7D /* ShoppingCartViewModel.swift in Sources */,
 				1E8D7D162B223F4700FD9C7D /* HomeTableViewCell.swift in Sources */,
 				1E8D7D1B2B23A92900FD9C7D /* ShoppingCartScreenViewController.swift in Sources */,
 				1E8D7D0D2B22029B00FD9C7D /* ProductsModel.swift in Sources */,
