@@ -9,6 +9,8 @@ import UIKit
 
 final class HomeContainerTableViewCell: UIView {
     
+    var delegate: AddToCartDelegate?
+    
     private(set) var productImage: UIImageView = {
         let image = UIImage(named: "image_test")
         let imageView = UIImageView(image: image)
@@ -95,7 +97,8 @@ final class HomeContainerTableViewCell: UIView {
     }()
     
     @objc func buttonTapped(sender : UIButton) {
-                    //Write button action here
+        delegate?.didTapAddToCart()
+//        print("Testandoo.....")
     }
     
     override init(frame: CGRect) {

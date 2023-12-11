@@ -7,17 +7,19 @@
 
 import UIKit
 
+
+
 final class ShoppingCartScreenViewController: UIViewController {
     
     private let bottomView = ShoppingCartSumUpView()
-    private var viewModel = HomeScreenViewModel()
+    private var viewModel = ShoppingCartViewModel()
     
     
     lazy var tableView: UITableView = {
         let tableView: UITableView = UITableView()
         tableView.dataSource = self
         tableView.delegate = self
-        tableView.register(HomeTableViewCell.self, forCellReuseIdentifier: HomeTableViewCell.cellReuseIdentifier)
+        tableView.register(ShoppingCartTableViewCell.self, forCellReuseIdentifier: ShoppingCartTableViewCell.cellReuseIdentifier)
         tableView.separatorStyle = .none
         tableView.rowHeight = UITableView.automaticDimension
         return tableView
@@ -61,8 +63,8 @@ extension ShoppingCartScreenViewController: UITableViewDelegate, UITableViewData
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: HomeTableViewCell.cellReuseIdentifier, for: indexPath)
-            as? HomeTableViewCell else { return UITableViewCell() }
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: ShoppingCartTableViewCell.cellReuseIdentifier, for: indexPath)
+            as? ShoppingCartTableViewCell else { return UITableViewCell() }
         
         viewModel.cellIndex = indexPath.row
         

@@ -76,8 +76,8 @@ final class DataService {
                 }
 
                 if statusCodeResponse.statusCode == 200 {
-                    guard let data = data else { return }
-                    guard let image = UIImage(data: data) else { return }
+                    guard let data = data,
+                          let image = UIImage(data: data) else { return }
                     onComplete(image)
                 } else { onError(.responseStatusCode(code: statusCodeResponse.statusCode)) }
             } else {

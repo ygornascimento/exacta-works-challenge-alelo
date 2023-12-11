@@ -22,14 +22,16 @@ struct HomeScreenViewModel {
         return productName
     }
     
-    var productPrice: String {
-        guard let productPrice = products[cellIndex].regularPrice else { return "" }
-        return productPrice
-    }
     
     var productPriceInstallments: String {
         guard let productInstallments = products[cellIndex].installments else { return "" }
         return productInstallments
+    }
+    
+    var productPrice: String {
+        guard let productPrice = products[cellIndex].regularPrice else { return "" }
+        guard let productInstallments = products[cellIndex].installments else { return "" }
+        return "Preço: \(productPrice) ou em até \(productInstallments)"
     }
     
     var productPromotionalStatus: String {
@@ -45,7 +47,7 @@ struct HomeScreenViewModel {
         guard let isOnSale = products[cellIndex].onSale else { return "" }
         guard let productPromotionalPrice = products[cellIndex].actualPrice else { return "" }
         if isOnSale {
-           return productPromotionalPrice
+           return "Preço Promocional: \(productPromotionalPrice)"
         } else {
             return " - "
         }
@@ -61,7 +63,7 @@ struct HomeScreenViewModel {
             }
         }
         
-        return listSizes
+        return "Tamanhos disponíveis: \(listSizes)" 
     }
     
     mutating func filterOnlyPromotionItems() {
@@ -74,6 +76,16 @@ struct HomeScreenViewModel {
         }
         
         products = promotionProducts
+    }
+    
+    func sendProduct() {
+        let cartViewModel = ShoppingCartViewModel()
+        let cartProduct = CartProduct(productName:
+                                        productName,
+                                      productPrice: productPrice,
+                                      productImage: imageUrl)
+        
+        cartViewModel.products.append(cartProduct)
     }
     
     

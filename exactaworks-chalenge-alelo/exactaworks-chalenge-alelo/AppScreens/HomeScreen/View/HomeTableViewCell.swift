@@ -7,7 +7,12 @@
 
 import UIKit
 
-final class HomeTableViewCell: UITableViewCell {
+protocol AddToCartDelegate {
+//    func didTapAddToCart(product: Product)
+    func didTapAddToCart()
+}
+
+final class HomeTableViewCell: UITableViewCell, AddToCartDelegate {
     
     static let cellReuseIdentifier = String(describing: HomeTableViewCell.self)
     private let cellContainer = HomeContainerTableViewCell()
@@ -23,6 +28,7 @@ final class HomeTableViewCell: UITableViewCell {
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         setupView()
+        cellContainer.delegate = self
     }
 
     required init?(coder: NSCoder) {
@@ -36,22 +42,28 @@ final class HomeTableViewCell: UITableViewCell {
     func configureWith(viewModel: HomeScreenViewModel, imageUrl: String) {
         loadingIndicator.startAnimating()
         cellContainer.productName.text = viewModel.productName
-        cellContainer.productPrice.text = "Preço: \(viewModel.productPrice) ou em até \(viewModel.productPriceInstallments)"
+        cellContainer.productPrice.text = viewModel.productPrice
         cellContainer.productPromotionalStatus.text = viewModel.productPromotionalStatus
-        cellContainer.productPromotionalPrice.text = "Preço Promocional: \(viewModel.productPromotionalPrice)"
-        cellContainer.availableSize.text = "Tamanhos disponíveis: \(viewModel.availableSize)"
+        cellContainer.productPromotionalPrice.text = viewModel.productPromotionalPrice
+        cellContainer.availableSize.text = viewModel.availableSize
         DataService.loadImage(
             fromUrl: viewModel.imageUrl) { [weak self] image in
                 DispatchQueue.main.async {
                     self?.cellContainer.productImage.image = image
                 }
-            } onError: { error in
+            } onError: { [weak self] error in
                 DispatchQueue.main.async {
-                    self.cellContainer.productImage.image = UIImage(named: "placeholder")
+                    self?.cellContainer.productImage.image = UIImage(named: "placeholder")
                 }
             }
-        
         loadingIndicator.stopAnimating()
+    }
+    
+    func didTapAddToCart() {
+//        let cartViewModel = ShoppingCartViewModel()
+//        cartViewModel.products.append(viewModel.products.first!)
+        viewModel.sendProduct()
+        print("Working...")
     }
     
     private func setupView() {
